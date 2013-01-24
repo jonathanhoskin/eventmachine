@@ -57,12 +57,7 @@ if ENV['CROSS_COMPILING']
   end
 end
 
-# Try to use pkg_config first, fixes #73
-if (!ENV['CROSS_COMPILING'] and pkg_config('openssl')) || manual_ssl_config
-  add_define "WITH_SSL"
-else
-  add_define "WITHOUT_SSL"
-end
+add_define "WITHOUT_SSL"
 
 add_define 'BUILD_FOR_RUBY'
 add_define 'HAVE_RBTRAP' if have_var('rb_trap_immediate', ['ruby.h', 'rubysig.h'])
